@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tar Archives</title>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="column" style="text-align: center; margin: 100px">
+                <i class="far fa-file-archive" style="color: #9b4dca; font-size: 10em; margin: 20px;"></i>
+                <h1 style="">
+                    tar-serve
+                </h1>
+                <p>
+                    upload tar files to static serve
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <form action="/" method="post" enctype="multipart/form-data">
+                    <input type="file" name="upload">
+                    <button type="submit">hochladen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Path</th>
+                            <th>Name</th>
+                            <th>FileInfo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        % for tar in tars:
+                        <tr>
+                            <td>
+                                <a href="{{tar['path']}}/">{{tar['path']}}</a>
+                            </td>
+                            <td>
+                                {{tar['name']}}
+                            </td>
+                            <td>
+                                {{tar['fileinfo']}}
+                            </td>
+                        </tr>
+                        % end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
